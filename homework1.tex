@@ -3,6 +3,7 @@
 
 \author{李约瀚 \\ 14130140331 \\ qinka@live.com \\ qinka@qinka.pw}
 \title{KWIC 翻译}
+\usepackage{listings}
 
 \begin{document}
 \maketitle
@@ -35,5 +36,45 @@
 \begin{itemize}
     \item 系统的部分组成内容（服务）是可重用组件
 \end{itemize}
+
+\section{主程序/子过程}
+
+主程序/子过程的方式就是简单的将问题根据基本的四个要求分解成：输入、以为、分组与输出。
+这些组件由主函数按照一定的顺序作为子过程进行调用控制。
+数据则通过一个不受约束的共享储存的协议在组件之间传递。
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{homework1-shared_data}
+\caption{主函数/子过程的结构}
+\label{fig:homework1-shared_data}
+\end{figure}
+\subsection{调用过程}
+
+输入函数被调用用于输入与解析输入的每一行。然后将这些数据表示用字符与对应的行索引。
+主函数调用 \lstinline|circularShift| 函数来进行循环移位操作，作用于每一行的数据。然后再将这些数据储存成循环位移数组。
+主函数之后调用 \lstinline|alphabetize| 函数将循环位移数组中的结果按照拉丁文字母表的顺序进行排序。然后输出成有序数组。
+最后调用 \lstinline|output| 函数将结果输出。
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{homework1-shared_data2}
+    \caption{调用结构图}
+    \label{fig:homework1-shared_data2}
+\end{figure}
+
+
+\subsection{优点}
+数据可以被有效的表示出来，特别是计算就算结果可以被同样的储存结构共享。
+
+不同的计算方式在不同的模块中是独立的。
+
+\subsection{缺点}
+改变一处数据的ABI或者数据格式，会影响全部模块。
+
+对算法与增加系统功能不容易实现。
+
+这种分解不容易支持重用。
+
+
 
 \end{document}
