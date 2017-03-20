@@ -7,3 +7,4 @@
 *.pdf
 *.synctex.gz
 auto
+.DS_Store

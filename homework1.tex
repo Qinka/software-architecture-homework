@@ -75,6 +75,44 @@
 
 这种分解不容易支持重用。
 
+\section{面向对象}
+采用面向对象的思想，将数据与作用在数据的读写操作封装在类中，主程序调用这些类生成的实例，形成控制流。
+数据不在直接组件之间共享，公用。每个模块提供了一个接口以便其他模块通过接口访问数据，并进行操作。
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.7\linewidth]{homework1-oo-1}
+  \caption{OO关系}
+  \label{fig:homework1-oo-1}
+\end{figure}
+
+\subsection{组件分工}
+\begin{table}[h!]
+  \centering
+  \caption{组件分工}
+  \begin{tabular}{c|c}
+    \verb|Input OBJECT| & 负责从输入读取数据并存储至 \lstinline|LineStorage| 中\\
+    \verb|LineStorage OBJECT| & 负责处理字符、单词、行\\
+    \verb|CircularShifter OBJECT| & 负责对 \lstinline|LineStorage| 对象中的数据进行循环位移 \\
+    \verb|Alphabetizer OBJECT| & 负责对循环位移得到的结果进行排序处理\\
+    \verb|Output OBJECT| & 负责答应输出 \\
+    \verb|Master Control OBJECT| & 负责空着体罚对象中调用的次序 \\
+  \end{tabular}
+\end{table}
+
+
+\subsection{优点}
+
+算法与数据表示可以被独立的更改，而不会影响其他模块。
+重用被更好的支持了，模块使得相互作用的不确定性减少。
+
+\subsection{缺点}
+
+设计无法良好的适应新增的功能或者其他的内容。
+添加新功能时影响类与模块，同时添加新模块不是十分方便，而过多的调用影响性能。
+
+
+\section{比较}
+面向对象相对要好于主程序／子过程要更优。依赖耦合相对较少，设计易于使用、维护、复用等。
 
 \end{document}
